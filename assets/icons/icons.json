@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "assets/img/villa-under-meteora-icon.svg"
+ },
+ "source_md5": "3b09b971b41e4420409f452898cbadc6",
+ "version": "fefc1cb5",
+ "tile": null,
+ "crop": null,
+ "header": [
+  "inline",
+  "index.html",
+  "0693bba8d2312ed7cd8a220c0b778361"
+ ],
+ "made": "2026-11-13"
+}
