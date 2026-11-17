@@ -61,6 +61,59 @@
 @keyframes advon-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.advon-ck{animation:none}}
 </style>
+<style id="tour-css">
+.tour{background:var(--night);color:#F4EBDD;padding:clamp(80px,10vw,140px) var(--pad);position:relative;overflow:hidden;overflow:clip}
+.tour::before{content:"";position:absolute;width:70vw;height:70vw;max-width:900px;max-height:900px;right:-18vw;top:-20vw;border-radius:50%;background:radial-gradient(closest-side,rgba(237,190,124,.13),transparent 70%);pointer-events:none}
+.tour-in{position:relative;max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"h v" "c v";column-gap:clamp(48px,8vw,128px);align-items:end}
+.tour-h{grid-area:h;align-self:end}
+.tour-fr{grid-area:v;position:relative}
+.tour-c{grid-area:c;align-self:start;padding-top:38px}
+.tour .kick{justify-content:flex-start;color:var(--gold)}
+.tour .kick::before{content:"";width:38px;height:1px;background:currentColor;opacity:.7}
+.tour .hx{color:#fff;max-width:560px;margin:0 0 26px}
+.tour .hx em{color:var(--gold)}
+.tour-p{color:rgba(244,235,221,.8);font-size:clamp(17px,1.3vw,19.5px);line-height:1.68;max-width:520px;margin:0}
+.tour-cl{font:500 10.5px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(244,235,221,.55);margin:0 0 14px}
+.tour-ch{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;max-width:560px;border-top:1px solid rgba(217,187,134,.22)}
+.tour-ch button{display:flex;align-items:center;gap:16px;width:100%;min-height:52px;padding:12px 0;background:none;border:0;border-bottom:1px solid rgba(217,187,134,.22);color:#F4EBDD;font:500 15px/1.3 var(--sans);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:color .3s var(--ease)}
+.tour-ch time{flex:none;min-width:40px;font:500 12px/1 var(--sans);letter-spacing:.1em;color:var(--gold);font-variant-numeric:tabular-nums}
+.tour-ch span{transition:transform .35s var(--ease)}
+.tour-ch button.on{color:var(--gold)}
+.tour-ch button.on time::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:8px;vertical-align:1px}
+.tour-ch button:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+@media (hover:hover){.tour-ch button:hover{color:var(--gold)}.tour-ch button:hover span{transform:translateX(5px)}}
+.tour-fr::before{content:"";position:absolute;inset:0;border:1px solid rgba(217,187,134,.45);border-radius:30px;transform:translate(16px,16px);pointer-events:none}
+.tour-v{position:relative;width:400px;width:min(400px,calc((100vh - 170px) * .5625));width:min(400px,calc((100svh - 170px) * .5625));min-width:280px;aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#0B0E13;box-shadow:0 50px 100px -40px rgba(0,0,0,.85),0 0 0 1px rgba(217,187,134,.35)}
+@supports not (aspect-ratio:1){.tour-v{height:0;padding-bottom:177.78%}}
+.tour-v video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;background:#0B0E13}
+.tour-play{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:10px;padding:0 20px 34px;border:0;margin:0;cursor:pointer;color:#fff;background:linear-gradient(180deg,rgba(16,20,27,0) 38%,rgba(16,20,27,.78) 100%);transition:opacity .5s var(--ease),visibility .5s;-webkit-tap-highlight-color:transparent}
+.tp-c{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;margin-bottom:12px;background:rgba(16,20,27,.35);border:1px solid rgba(237,190,124,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);position:relative;transition:transform .45s var(--ease),background-color .35s}
+.tp-c::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(237,190,124,.7);animation:tourRing 2.8s var(--ease) infinite}
+.tp-c svg{width:30px;height:30px;fill:var(--gold);margin-left:4px}
+.tp-t{font:300 26px/1.1 var(--serif);letter-spacing:-.005em}
+.tp-s{font:500 10.5px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(244,235,221,.75)}
+@media (hover:hover){.tour-play:hover .tp-c{transform:scale(1.07);background:rgba(237,190,124,.18)}}
+.tour-play:active .tp-c{transform:scale(.96)}
+.tour-play:focus-visible .tp-c{outline:2px solid var(--gold);outline-offset:6px}
+.tour-v.playing .tour-play{opacity:0;visibility:hidden}
+.tour.off .tp-c::after{animation-play-state:paused}
+@keyframes tourRing{0%{transform:scale(1);opacity:.8}70%,100%{transform:scale(1.55);opacity:0}}
+.hero-a .lnk-v svg.pl{width:12px;height:12px;fill:currentColor;margin:0 2px 0 0}
+@media (max-width:900px){
+.tour-in{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "v" "c";justify-items:center;text-align:center}
+.tour .kick{justify-content:center}
+.tour .kick::before{display:none}
+.tour .hx,.tour-p{margin-left:auto;margin-right:auto}
+.tour-fr{margin-top:44px}
+.tour-v{width:min(78vw,360px);min-width:0}
+.tour-fr::before{transform:translate(10px,10px);border-radius:26px}
+.tour-v{border-radius:26px}
+.tour-c{width:100%;max-width:560px;padding-top:44px;text-align:left}
+.tour-cl{text-align:center}
+}
+@media (max-width:520px){.tour-ch{grid-template-columns:minmax(0,1fr)}.tp-t{font-size:23px}}
+@media (prefers-reduced-motion:reduce){.tp-c::after{animation:none;opacity:0}.tour-ch span,.tp-c{transition:none}}
+</style>
 </head>
 <body>
 <!-- VILLA UNDER METEORA · Advon Media · style «Βράχος & ομίχλη» (Dark luxury × editorial mountain) · skeleton: full-bleed hero + floating booking bar / sticky-photo editorial villa / signature «Ποιος κοιμάται πού» sleeping planner / alternating bands / scroll-drawn ridge over golden-hour band / pinned horizontal night reel / justified gallery / location list + drone + map / score aside + review masonry / glance list + FAQ / dusk booking band · opening «Ομίχλη» (ridge draws, mist parts) -->
@@ -96,6 +149,7 @@
   </a>
   <nav class="nav" aria-label="Κύριο μενού" data-en-aria="Main menu">
     <a href="#villa" data-en="The villa">Η βίλα</a>
+    <a href="#video" data-en="Video tour">Βίντεο</a>
     <a href="#ypnos" data-en="Sleeping">Υπνοδωμάτια</a>
     <a href="#xoroi" data-en="Spaces">Χώροι</a>
     <a href="#topothesia" data-en="Location">Τοποθεσία</a>
@@ -115,6 +169,7 @@
 <div class="mnav" id="mnav" hidden>
   <nav aria-label="Μενού κινητού" data-en-aria="Mobile menu">
     <a href="#villa" data-en="The villa">Η βίλα</a>
+    <a href="#video" data-en="Video tour">Βίντεο</a>
     <a href="#ypnos" data-en="Sleeping">Υπνοδωμάτια</a>
     <a href="#xoroi" data-en="Spaces">Χώροι</a>
     <a href="#vradi" data-en="By night">Το βράδυ</a>
@@ -144,6 +199,7 @@
     <div class="hero-a">
       <a class="btn btn-l" href="#kratisi" data-en="Check availability">Δείτε διαθεσιμότητα</a>
       <a class="lnk" href="#villa"><span data-en="Discover the villa">Γνωρίστε τη βίλα</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+      <a class="lnk lnk-v" href="#video"><svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span data-en="Watch the video">Δείτε το βίντεο</span></a>
     </div>
   </div>
   <a class="hero-score" href="#kritikes" aria-label="Βαθμολογία 9,6 στο Booking.com — δείτε τις κριτικές" data-en-aria="Rated 9.6 on Booking.com — read the reviews">
@@ -195,6 +251,38 @@
   <div class="villa-ph">
     <figure class="vp1 rv-pol"><a class="ph" href="../assets/img/villa-under-meteora-kalampaka-vila-dromos-drone-1600.webp"><img src="../assets/img/villa-under-meteora-kalampaka-vila-dromos-drone-1600.webp" srcset="../assets/img/villa-under-meteora-kalampaka-vila-dromos-drone-800.webp 800w, ../assets/img/villa-under-meteora-kalampaka-vila-dromos-drone-1600.webp 1600w" sizes="(max-width:900px) 92vw, 46vw" width="2801" height="2000" alt="Η βίλα από ψηλά, με τον κήπο και τις βεράντες" data-en-alt="The villa from above, with its garden and terraces" loading="lazy" decoding="async"></a></figure>
     <figure class="vp2 rv-pol"><a class="ph" href="../assets/img/villa-under-meteora-kalampaka-veranta-kipos-thea-vraxous-2400.webp"><img src="../assets/img/villa-under-meteora-kalampaka-veranta-kipos-thea-vraxous-1600.webp" srcset="../assets/img/villa-under-meteora-kalampaka-veranta-kipos-thea-vraxous-800.webp 800w, ../assets/img/villa-under-meteora-kalampaka-veranta-kipos-thea-vraxous-1600.webp 1600w, ../assets/img/villa-under-meteora-kalampaka-veranta-kipos-thea-vraxous-2400.webp 2400w" sizes="(max-width:900px) 60vw, 24vw" width="3000" height="1686" alt="Η βεράντα και ο κήπος, με θέα στους βράχους των Μετεώρων" data-en-alt="The terrace and garden, looking at the Meteora rocks" loading="lazy" decoding="async"></a></figure>
+  </div>
+</section>
+
+<!-- VIDEO TOUR (owner's own video, Nov 2026) -->
+<section class="tour" id="video">
+  <div class="tour-in">
+    <div class="tour-h">
+      <p class="kick" data-en="Video">Βίντεο</p>
+      <h2 class="hx" data-fx="rise" data-en="Walk through &lt;em&gt;the villa&lt;/em&gt;">Περπατήστε μέσα <em>στη βίλα</em></h2>
+      <p class="tour-p rv" data-en="Three minutes in a single, unedited take: from the garden and the front door to the living room, the kitchen, the bedrooms and the bathrooms — just as you will find it when you arrive.">Τρία λεπτά σε ένα πλάνο, χωρίς μοντάζ: από τον κήπο και την πόρτα της εισόδου στο σαλόνι, την κουζίνα, τα υπνοδωμάτια και τα μπάνια — όπως θα τη βρείτε όταν φτάσετε.</p>
+    </div>
+    <div class="tour-fr rv">
+      <div class="tour-v" id="tourV">
+        <video preload="none" playsinline poster="../assets/img/villa-under-meteora-kalampaka-video-periigisi-poster.webp" width="720" height="1280" aria-label="Βίντεο-περιήγηση στη Villa Under Meteora" data-en-aria="Video tour of Villa Under Meteora"><source src="../assets/video/villa-under-meteora-kalampaka-video-periigisi.mp4" type="video/mp4"></video>
+        <button class="tour-play" type="button" aria-label="Αναπαραγωγή βίντεο" data-en-aria="Play the video">
+          <span class="tp-c"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="tp-t" data-en="Watch the tour">Δείτε την περιήγηση</span>
+          <span class="tp-s" data-en="3 minutes · with sound">3 λεπτά · με ήχο</span>
+        </button>
+      </div>
+    </div>
+    <div class="tour-c rv">
+      <p class="tour-cl" data-en="Jump straight to">Μεταβείτε κατευθείαν</p>
+      <ol class="tour-ch">
+      <li><button type="button" data-t="0"><time>0:00</time><span data-en="Garden & entrance">Κήπος & είσοδος</span></button></li>
+      <li><button type="button" data-t="21"><time>0:21</time><span data-en="Living room & fireplace">Σαλόνι με τζάκι</span></button></li>
+      <li><button type="button" data-t="45"><time>0:45</time><span data-en="Kitchen">Κουζίνα</span></button></li>
+      <li><button type="button" data-t="72"><time>1:12</time><span data-en="Bedrooms">Υπνοδωμάτια</span></button></li>
+      <li><button type="button" data-t="126"><time>2:06</time><span data-en="Bunk-bed room">Δωμάτιο με κουκέτες</span></button></li>
+      <li><button type="button" data-t="159"><time>2:39</time><span data-en="Bathroom">Μπάνιο</span></button></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -641,6 +729,21 @@
       .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
+<script id="tour-js">
+(function(){var w=document.getElementById('tourV');if(!w)return;var v=w.querySelector('video'),b=w.querySelector('.tour-play'),sec=document.getElementById('video'),
+chs=[].slice.call(document.querySelectorAll('.tour-ch button')),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function start(t){if(!v.hasAttribute('controls'))v.setAttribute('controls','');w.classList.add('playing');
+ if(t!=null){if(v.readyState>0){try{v.currentTime=t}catch(e){}}else{v.addEventListener('loadedmetadata',function(){try{v.currentTime=t}catch(e){}},{once:true})}}
+ var p=v.play();if(p&&p.catch)p.catch(function(){})}
+b.addEventListener('click',function(){start(null)});
+chs.forEach(function(c){c.addEventListener('click',function(){start(+c.getAttribute('data-t'));
+ var r=w.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)w.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})})});
+function mark(){var t=v.currentTime,k=-1;chs.forEach(function(c,i){if(t>=+c.getAttribute('data-t')-.5)k=i});chs.forEach(function(c,i){c.classList.toggle('on',i===k&&w.classList.contains('playing'))})}
+v.addEventListener('timeupdate',mark);v.addEventListener('seeked',mark);
+v.addEventListener('ended',function(){w.classList.remove('playing');v.removeAttribute('controls');try{v.currentTime=0}catch(e){}mark()});
+if('IntersectionObserver'in window){new IntersectionObserver(function(e){var on=e[0].isIntersecting;sec.classList.toggle('off',!on);if(!on&&!v.paused)v.pause()},{threshold:0}).observe(sec)}
 })();
 </script>
 </body>
